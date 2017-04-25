@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="css/index.css" rel="stylesheet">
+    <link href="css/index2.css" rel="stylesheet">
     <link href="css/public.css" rel="stylesheet">
+    <link href="iconfont/iconfont.css" rel="stylesheet">
 
 </head>
 <body>
@@ -16,14 +18,17 @@
             <img src="images/logo.png" width="100%">
         </div>
         <div class="head-left">学科发展数据库</div>
-        <div class="head-right">
-            <a>首页</a>
-            <a>学术数据中心</a>
-            <a>学科成果展示</a>
-            <a>学科竞争力分析</a>
-            <a>学科服务</a>
-            <a>学科资源</a>
-            <a>联系我们</a>
+        <div class="menu h">
+            <div class="icons">&#xe646;</div>
+        </div>
+        <div class="nav">
+            <a href="#">首页</a>
+            <a href="#">学术数据中心</a>
+            <a href="#">学科成果展示</a>
+            <a href="#">学科竞争力分析</a>
+            <a href="#">学科服务</a>
+            <a href="#">学科资源</a>
+            <a href="#">联系我们</a>
         </div>
     </div>
     <div class="database">
@@ -87,6 +92,10 @@
     </div>
     <div class="subject-resources">
         <div class="resources-left">
+            <div class="guide"></div>
+            <div class="guide guide2"></div>
+            <div class="guide guide3"></div>
+            <div class="guide guide4"></div>
         </div>
         <b><p>学科资源</p></b>
         <div class="resources-right">
@@ -159,10 +168,18 @@
             <div class="click">
                 <div class="click1"><a href="">Click Here to Find Us <br><u>http://www.smartlib.cn</u></a></div>
             </div>
+            <div class="link">
+                <div class="link1"></div>
+                <div class="link2"></div>
+                <div class="link3"></div>
+            </div>
         </div>
     </div>
     <div class="back">
-        <div class="back-on">^ <br> BACK TO TOP</div>
+        <div class="back1">
+            <div class="back-on"></div>
+            <div class="back-down">BACK TO TOP</div>
+        </div>
     </div>
     <div class="footer">
         <div class="footer1">
@@ -171,3 +188,89 @@
     </div>
 </body>
 </html>
+<script src="iconfont/iconfont.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+    $(function() {
+        $(".menu").on("click", function () {
+            if ($(this).hasClass("h")) {
+                $(this).removeClass("h");
+            } else {
+                $(this).addClass("h");
+            }
+        })       //click the  menu the nav show;
+
+        $(".nav").on("click", function () {
+            $(".menu").addClass("h");
+        }); //click the  nav hide ;
+
+        $(".back-on,.back-down").on("click", function() {
+            $("body").stop(true).animate({
+                "scrollTop": 0
+            }, 1500);
+        })       //back to top
+
+        $(".nav a").eq(0).on("click", function() {
+            $("body").stop(true).animate({
+                "scrollTop": 0
+            }, 1500);
+        })
+        $(".nav a").eq(1).on("click", function() {
+            $("body").stop(true).animate({
+                "scrollTop": 500
+            }, 1500);
+        })
+        $(".nav a").eq(2).on("click", function() {
+            $("body").stop(true).animate({
+                "scrollTop": 700
+            }, 1500);
+        })
+        $(".nav a").eq(3).on("click", function() {
+            $("body").stop(true).animate({
+                "scrollTop": 800
+            }, 1500);
+        })
+        $(".nav a").eq(4).on("click", function() {
+            $("body").stop(true).animate({
+                "scrollTop": 1300
+            }, 1500);
+        })
+        $(".nav a").eq(5).on("click", function() {
+            $("body").stop(true).animate({
+                "scrollTop": 2500
+            }, 1500);
+        })
+        $(".nav a").eq(6).on("click", function() {
+            $("body").stop(true).animate({
+                "scrollTop": 3500
+            }, 1500);
+        })       //click the nav' a content ,the scroll to the relative position
+
+
+        $(".database1 p,.database2 p,.science1, .science-right ul,.subject-service, .subject-main,.subject-resources p," +
+            " .resources-right,.contact, .information-right, .address, .info").hide();
+        $(".database1 p, .database2 p").fadeIn(1000);
+        var w_h = $(window).scrollTop();
+        $(window).scroll(function () {
+            w_h = $(window).scrollTop();
+
+            if(w_h >=0 && w_h < 200){
+                $(".database1 p, .database2 p").fadeIn(1000);
+            } else if(w_h >= 300 && w_h < 1000){
+                $(".science1, .science-right ul").fadeIn(1000);
+            } else if(w_h >= 1000 && w_h < 2000){
+                $(".subject-service, .subject-main").fadeIn(1000);
+            } else if(w_h >= 2000 && w_h < 3000){
+                $(".subject-resources p, .resources-right").fadeIn(1000);
+            } else if(w_h >= 3000 ){
+                $(".contact, .information-right, .address, .info").fadeIn(1000);
+            }
+        })       //fadein
+
+        //  When scrolling menu disappear
+        $(window).scroll(function () {
+            $(".menu").addClass("h");
+        })
+
+    })
+</script>
