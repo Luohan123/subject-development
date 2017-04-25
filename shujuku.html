@@ -10,6 +10,8 @@
     <link href="css/index2.css" rel="stylesheet">
     <link href="css/public.css" rel="stylesheet">
     <link href="iconfont/iconfont.css" rel="stylesheet">
+    <!--<script src="js/map.js"></script>-->
+    <script type = "text/javascript" src = "http://api.map.baidu.com/api?v=2.0&ak=wX9LjiHYN2LfNWgRlkG51gCvtGeN3MYD" ></script>
 
 </head>
 <body>
@@ -165,9 +167,17 @@
                 <p>Email: info@mysite.com</p>
                 <p>Tel: +86 25 5882 5877 / 5881 2129</p>
             </div>
+
+            <input type="button" class="btn" value="点击显示地图">
+            <div class="cover">
+                <div class="closed">X</div>
+                <div id="map"></div>
+            </div>
+
             <div class="click">
                 <div class="click1"><a href="">Click Here to Find Us <br><u>http://www.smartlib.cn</u></a></div>
             </div>
+
             <div class="link">
                 <div class="link1"></div>
                 <div class="link2"></div>
@@ -190,6 +200,7 @@
 </html>
 <script src="iconfont/iconfont.js"></script>
 <script src="js/jquery-3.1.1.min.js"></script>
+
 <script>
     $(function() {
         $(".menu").on("click", function () {
@@ -272,5 +283,23 @@
             $(".menu").addClass("h");
         })
 
+
+        $(".btn").on("click", function () {
+
+            $(".cover").fadeIn();
+// 百度地图API功能
+            var map = new BMap.Map("map");
+            var point = new BMap.Point(118.786471, 32.029215);
+            map.centerAndZoom(point, 15);
+            var marker = new BMap.Marker(point);  // 创建标注
+            map.addOverlay(marker);               // 将标注添加到地图中
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+        })
+
+
+        $(".closed").click(function () {
+            $(".cover").fadeOut();
+        })
     })
 </script>
